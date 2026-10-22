@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mali: 'Mali', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --bg-primary: #FAFAF8;
+  --surface-primary: #FFFFFF;
+  --text-primary: #20231F;
+  --text-secondary: #5C6159;
+  --text-muted: #858A81;
+  --border-color: #E4E5DF;
+  --accent-color: #1F6E56;
+}
+
+html {
+  font-family: var(--font-mali);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-mali);
+  line-height: 1.6;
+}
+
+/* Ensure all form controls, buttons, and dialogs inherit Mali font globally */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* Custom accessible focus outlines */
+:focus-visible {
+  outline: 2px solid #1F6E56;
+  outline-offset: 2px;
+}
+
+/* Custom selection */
+::selection {
+  background-color: #EBF5F1;
+  color: #0E3B2E;
+}
