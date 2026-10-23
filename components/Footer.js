@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { ArrowUpRight, Heart } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border bg-surface mt-auto">
-      <div className="max-w-7xl xl:max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          {/* Brand Col */}
-          <div className="md:col-span-2 space-y-3">
+      <div className="max-w-7xl xl:max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10 md:py-14">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-border-subtle">
+          {/* Brand */}
+          <div className="space-y-2 max-w-md">
             <Link
               href="/"
               className="inline-flex items-center gap-2 text-lg font-bold text-primary"
@@ -19,21 +18,14 @@ export default function Footer() {
               </span>
               <span>Monograph<span className="text-accent">.</span></span>
             </Link>
-            <p className="text-sm text-secondary max-w-sm leading-relaxed">
-              An architectural showcase demonstrating Next.js Pages Router static site generation (SSG), dynamic routes, clean Mali typography, and thoughtful UI design.
+            <p className="text-sm text-secondary leading-relaxed">
+              An independent editorial publication dedicated to modern frontend engineering, purposeful design systems, and thoughtful typography.
             </p>
-            <div className="flex items-center gap-2 pt-1 text-xs text-muted">
-              <span className="inline-block w-2 h-2 rounded-full bg-accent/70 animate-pulse" />
-              <span>Assignment 1: Getting Started &amp; Routing</span>
-            </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-3">
-            <p className="text-xs font-semibold text-primary uppercase tracking-wider">
-              Navigation
-            </p>
-            <ul className="space-y-2 text-sm text-secondary">
+          {/* Navigation Links */}
+          <nav aria-label="Footer Navigation">
+            <ul className="flex flex-wrap items-center gap-6 text-sm font-medium text-secondary">
               <li>
                 <Link href="/" className="hover:text-primary transition-colors">
                   Home
@@ -46,45 +38,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/blog" className="hover:text-primary transition-colors">
-                  Articles &amp; Blog
+                  Articles
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-primary transition-colors">
-                  Contact Form
+                  Contact
                 </Link>
               </li>
             </ul>
-          </div>
-
-          {/* Tech Stack */}
-          <div className="space-y-3">
-            <p className="text-xs font-semibold text-primary uppercase tracking-wider">
-              Architecture
-            </p>
-            <ul className="space-y-2 text-sm text-secondary">
-              <li className="flex items-center gap-1.5">
-                <span>Next.js 14 (Pages)</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span>getStaticPaths &amp; Props</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span>Tailwind CSS v3</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span>Mali Typography</span>
-              </li>
-            </ul>
-          </div>
+          </nav>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
-          <p>© {currentYear} Monograph. Built for Next.js Assignment 1.</p>
-          <p className="flex items-center gap-1.5">
-            Designed with thoughtful typography &amp; zero generic clutter
-          </p>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+          <p>© {currentYear} Monograph. All rights reserved.</p>
+          <p>Crafted with Mali typography &amp; clean web standards.</p>
         </div>
       </div>
     </footer>

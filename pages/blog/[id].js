@@ -61,8 +61,6 @@ export default function BlogPost({ post, prevPost, nextPost }) {
               <Clock className="w-3.5 h-3.5" />
               <span>{post.readTime}</span>
             </span>
-            <span className="text-border-strong">•</span>
-            <span className="font-mono text-accent">Static Route ID: {post.id}</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-primary leading-tight">
@@ -143,24 +141,7 @@ export default function BlogPost({ post, prevPost, nextPost }) {
           })}
         </div>
 
-        {/* Architectural footnote */}
-        <div className="p-4 sm:p-5 rounded-xl bg-surface border border-border text-xs sm:text-sm text-secondary space-y-2 mt-12">
-          <p className="font-semibold text-primary flex items-center gap-1.5">
-            <Bookmark className="w-4 h-4 text-accent" />
-            <span>Static Site Generation (SSG) in Action</span>
-          </p>
-          <p className="leading-relaxed">
-            This page was generated statically at build time using Next.js{" "}
-            <code className="font-mono text-xs bg-surface-muted px-1 py-0.5 rounded border border-border">
-              getStaticProps
-            </code>{" "}
-            and mapped via{" "}
-            <code className="font-mono text-xs bg-surface-muted px-1 py-0.5 rounded border border-border">
-              getStaticPaths
-            </code>
-            . Requesting an invalid ID outside the generated manifest immediately routes to our custom 404 page.
-          </p>
-        </div>
+
 
         {/* Previous and Next Navigation */}
         <nav

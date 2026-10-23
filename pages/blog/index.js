@@ -39,7 +39,7 @@ export default function BlogIndex({ posts }) {
         <PageHeader
           badge="Editorial Archive"
           title="Articles &amp; Perspectives"
-          description="A collection of technical articles pre-rendered statically with Next.js getStaticPaths and getStaticProps."
+          description="A collection of technical essays, design system notes, and frontend reflections."
         />
 
         {/* Filter and Search Bar */}

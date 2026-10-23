@@ -125,7 +125,7 @@ export default function Contact() {
             </div>
 
             <div className="p-4 rounded-xl bg-surface-muted border border-border-subtle text-xs text-muted leading-relaxed">
-              <strong>Notice:</strong> This form demonstrates client-side schema validation, accessible error announcements, and state transitions for Next.js Assignment 1.
+              Our team reviews inquiries periodically and will respond to your message promptly.
             </div>
           </div>
 
@@ -158,7 +158,7 @@ export default function Contact() {
                     <span className="text-muted">Message Preview:</span> &ldquo;{submittedData?.message}&rdquo;
                   </p>
                   <p className="pt-2 text-xs text-muted border-t border-border-subtle">
-                    <strong>Notice:</strong> This is a frontend routing &amp; validation prototype (Assignment 1). No actual email was transmitted over SMTP.
+                    We have recorded your submission and will get in touch with you shortly.
                   </p>
                 </div>
 

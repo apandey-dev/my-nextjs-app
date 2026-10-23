@@ -6,8 +6,8 @@ import { ArrowRight, Code, Compass, Heart, Sparkles, BookOpen } from "lucide-rea
 export default function About() {
   return (
     <Layout
-      title="About — Monograph & The Assignment 1 Project"
-      description="Learn about the design philosophy, architectural choices, and principles guiding this Next.js project."
+      title="About — Monograph"
+      description="Learn about the design philosophy, architectural choices, and principles guiding Monograph."
     >
       <div className="max-w-5xl xl:max-w-6xl mx-auto space-y-14">
         <PageHeader
@@ -29,16 +29,16 @@ export default function About() {
               </p>
               <div className="flex items-center gap-2 pt-1 text-xs text-muted">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span>Next.js Assignment 1 • Active Production Build</span>
+                <span>Independent Editorial Publication</span>
               </div>
             </div>
           </div>
 
           <div className="border-t border-border-subtle pt-5 space-y-4 text-secondary text-sm sm:text-base leading-relaxed">
             <p>
-              Monograph was created as a focused implementation of the Next.js Assignment 1 specification.
-              Rather than assembling an arbitrary starter template, every page and component was built from scratch
-              with an emphasis on clean layout architecture, semantic markup, and humanistic typography.
+              Monograph is an editorial initiative focused on modern web engineering, clean design systems,
+              and thoughtful typography. Every page and component is built from scratch with an emphasis on
+              performance, accessible semantic markup, and humanistic visual identity.
             </p>
             <p>
               Web development often falls into traps of visual over-decoration: animated glow circles,

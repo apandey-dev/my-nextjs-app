@@ -7,15 +7,15 @@ import { ArrowRight, Sparkles, BookOpen, Layers, Terminal } from "lucide-react";
 export default function Home({ featuredPosts }) {
   return (
     <Layout
-      title="Monograph — Modern Next.js Dynamic Routing & Editorial Platform"
-      description="A clean, thoughtfully designed Next.js application demonstrating static site generation, dynamic routes, and cohesive typography."
+      title="Monograph — Modern Frontend Engineering & Editorial Journal"
+      description="A clean, thoughtfully designed editorial application exploring frontend architecture, design systems, and responsive typography."
     >
       <div className="space-y-16 sm:space-y-24">
         {/* Hero Section */}
         <section className="space-y-6 pt-4 sm:pt-8 md:pt-12 text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-accent-light text-accent-text border border-accent/20">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span>Next.js Assignment 1 • Pages Router &amp; Static Generation</span>
+            <span>Editorial Journal &amp; Perspectives</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-[1.15] max-w-4xl">
@@ -23,15 +23,8 @@ export default function Home({ featuredPosts }) {
           </h1>
 
           <p className="text-secondary text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
-            Monograph is an architectural editorial space designed with disciplined typography,
-            zero AI-generated clutter, and Next.js static pre-rendering with{" "}
-            <code className="text-xs sm:text-sm font-mono bg-surface-muted px-1.5 py-0.5 rounded border border-border">
-              getStaticPaths
-            </code>{" "}
-            and{" "}
-            <code className="text-xs sm:text-sm font-mono bg-surface-muted px-1.5 py-0.5 rounded border border-border">
-              getStaticProps
-            </code>.
+            Monograph is an editorial space exploring frontend architecture, responsive web standards,
+            design systems, and clean humanistic typography.
           </p>
 
           {/* Call to Actions */}
@@ -47,7 +40,7 @@ export default function Home({ featuredPosts }) {
               href="/about"
               className="inline-flex items-center justify-center gap-2 bg-surface hover:bg-surface-muted text-primary font-medium px-5 py-2.5 rounded-lg text-sm sm:text-base border border-border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              <span>About the Project</span>
+              <span>About Monograph</span>
             </Link>
           </div>
         </section>
@@ -72,7 +65,7 @@ export default function Home({ featuredPosts }) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {featuredPosts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
@@ -89,8 +82,7 @@ export default function Home({ featuredPosts }) {
               Built with Intentional Restraint
             </h2>
             <p className="text-secondary text-sm sm:text-base leading-relaxed">
-              Every detail in this application serves a direct purpose — avoiding the inflated,
-              repetitive patterns common in AI templates.
+              A publication focused on clarity, performance, and craftsmanship across modern web experiences.
             </p>
           </div>
 
@@ -119,9 +111,9 @@ export default function Home({ featuredPosts }) {
               <div className="w-9 h-9 rounded-lg bg-surface border border-border flex items-center justify-center text-accent">
                 <Terminal className="w-4 h-4" />
               </div>
-              <h3 className="font-semibold text-primary text-base">Pages Router Routing</h3>
+              <h3 className="font-semibold text-primary text-base">Fluid Navigation</h3>
               <p className="text-secondary text-xs sm:text-sm leading-relaxed">
-                Semantic Next.js routing with clean active states, shared persistent layout, and graceful 404 fallback handling.
+                Semantic routing with clean active states, shared persistent layout, and graceful 404 fallback handling.
               </p>
             </div>
           </div>
@@ -130,10 +122,10 @@ export default function Home({ featuredPosts }) {
         {/* Closing CTA Section */}
         <section className="bg-surface-muted border border-border rounded-2xl p-6 sm:p-10 text-center space-y-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-primary">
-            Have questions or want to collaborate?
+            Have thoughts or inquiries?
           </h2>
           <p className="text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            The contact form features complete field-level client validation, accessible error announcements, and feedback.
+            Feel free to reach out to discuss frontend systems, design engineering, or editorial collaborations.
           </p>
           <div className="pt-2">
             <Link
