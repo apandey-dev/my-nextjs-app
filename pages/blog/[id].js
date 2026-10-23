@@ -24,7 +24,7 @@ export default function BlogPost({ post, prevPost, nextPost }) {
       title={`${post.title} — Monograph`}
       description={post.excerpt}
     >
-      <article className="max-w-3xl mx-auto space-y-10">
+      <article className="max-w-4xl xl:max-w-5xl mx-auto space-y-12">
         {/* Navigation back */}
         <div className="flex items-center justify-between gap-4">
           <Link

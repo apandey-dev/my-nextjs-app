@@ -9,7 +9,7 @@ export default function About() {
       title="About — Monograph & The Assignment 1 Project"
       description="Learn about the design philosophy, architectural choices, and principles guiding this Next.js project."
     >
-      <div className="max-w-3xl mx-auto space-y-12">
+      <div className="max-w-5xl xl:max-w-6xl mx-auto space-y-14">
         <PageHeader
           badge="About Monograph"
           title="Designed for clarity, built for performance."

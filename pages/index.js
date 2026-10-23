@@ -18,11 +18,11 @@ export default function Home({ featuredPosts }) {
             <span>Next.js Assignment 1 • Pages Router &amp; Static Generation</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary leading-[1.18] max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-[1.15] max-w-4xl">
             Thoughtful essays on modern frontend engineering &amp; design craft.
           </h1>
 
-          <p className="text-secondary text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
+          <p className="text-secondary text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
             Monograph is an architectural editorial space designed with disciplined typography,
             zero AI-generated clutter, and Next.js static pre-rendering with{" "}
             <code className="text-xs sm:text-sm font-mono bg-surface-muted px-1.5 py-0.5 rounded border border-border">

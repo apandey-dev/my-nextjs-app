@@ -260,5 +260,5 @@ The application is fully pre-configured for one-click deployment on [Vercel](htt
 
 ## Links
 
-- **GitHub Repository**: [https://github.com/apandey-dev/nextjs-assignment-1](https://github.com/apandey-dev/nextjs-assignment-1)
-- **Live Vercel Demo**: [https://nextjs-assignment-1.vercel.app](https://nextjs-assignment-1.vercel.app) *(Deployable via Vercel)*
+- **GitHub Repository**: [https://github.com/apandey-dev/my-nextjs-app](https://github.com/apandey-dev/my-nextjs-app)
+- **Live Vercel Demo**: [https://my-nextjs-app-seven-phi.vercel.app](https://vercel.com/new) *(Deployable via Vercel)*
