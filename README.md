@@ -78,4 +78,4 @@ npm test
 ## Links
 
 - **GitHub Repository**: [https://github.com/apandey-dev/my-nextjs-app](https://github.com/apandey-dev/my-nextjs-app)
-- **Live Demo**: [https://my-nextjs-app-seven-phi.vercel.app](https://vercel.com/new)
+- **Live Demo**: [Visit Now](https://my-nextjs-app-uh6s.vercel.app/)
