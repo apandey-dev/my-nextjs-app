@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo / Title */}
           <Link
@@ -51,7 +51,7 @@ export default function Navbar() {
                 <Link
                   key={item.path}
                   href={item.path}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
+                  className={`px-3.5 py-1.5 text-sm font-medium rounded-md transition-all ${
                     active
                       ? 'bg-slate-900 text-white shadow-sm'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'

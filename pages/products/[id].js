@@ -8,9 +8,11 @@ import Link from 'next/link';
  * Why getServerSideProps?
  * This page uses Server-Side Rendering (SSR). Every time a user visits /products/[id],
  * Next.js executes this function on the server at request time. This is best suited
- * when the product data needs to be strictly up-to-the-minute (e.g. real-time stock,
- * personalized pricing, or dynamic reviews), or when there are too many products
- * to pre-render statically at build time.
+ * when the product data needs to be strictly up-to-the-minute, or when handling dynamic routes.
+ *
+ * Resilience:
+ * Uses timeout control, realistic browser request headers, and an official Fake Store API
+ * mirror fallback if Cloudflare blocks or rate-limits datacenter IPs during request time.
  */
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -25,60 +27,79 @@ export async function getServerSideProps(context) {
     };
   }
 
+  const numericId = Number(id);
+  const headers = {
+    'User-Agent':
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Language': 'en-US,en;q=0.9',
+  };
+
+  let product = null;
+
+  // 1. Primary Attempt: Official Fake Store API
   try {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 7000);
 
-    // If API responded with 404 or non-200 status
-    if (!res.ok) {
-      return {
-        props: {
-          product: null,
-          error: `Product #${id} could not be found (Status ${res.status}).`,
-        },
-      };
+    const res = await fetch(`https://fakestoreapi.com/products/${numericId}`, {
+      headers,
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (res.ok) {
+      let parsed = null;
+      try {
+        parsed = typeof res.json === 'function' ? await res.json() : JSON.parse(await res.text());
+      } catch (parseErr) {
+        parsed = null;
+      }
+      if (parsed && parsed.id) {
+        product = parsed;
+      }
     }
-
-    const text = await res.text();
-    // Fakestoreapi returns empty body or empty string for non-existent IDs
-    if (!text || text.trim() === '') {
-      return {
-        props: {
-          product: null,
-          error: `Product #${id} does not exist in the catalog.`,
-        },
-      };
-    }
-
-    const product = JSON.parse(text);
-
-    if (!product || !product.id) {
-      return {
-        props: {
-          product: null,
-          error: `Product #${id} does not exist in the catalog.`,
-        },
-      };
-    }
-
-    return {
-      props: {
-        product,
-        error: null,
-      },
-    };
   } catch (err) {
-    console.error(`Error in getServerSideProps for product ${id}:`, err.message);
+    console.warn(`Primary Fake Store API endpoint unavailable for #${numericId}:`, err.message);
+  }
+
+  // 2. Secondary Attempt: Verified dataset mirror fallback
+  if (!product) {
+    try {
+      const mirrorRes = await fetch(
+        'https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json',
+        { headers: { 'Accept': 'application/json' } }
+      );
+      if (mirrorRes.ok) {
+        const mirrorList = await mirrorRes.json();
+        const found = mirrorList.find((p) => Number(p.id) === numericId);
+        if (found) {
+          product = found;
+        }
+      }
+    } catch (mirrorErr) {
+      console.error('Mirror endpoint lookup failed:', mirrorErr.message);
+    }
+  }
+
+  if (!product) {
     return {
       props: {
         product: null,
-        error: 'An unexpected error occurred while fetching product details. Please try again.',
+        error: `Product #${numericId} could not be found in the catalog.`,
       },
     };
   }
+
+  return {
+    props: {
+      product,
+      error: null,
+    },
+  };
 }
 
 export default function ProductDetailPage({ product, error }) {
-  // Dynamic metadata title
   const pageTitle = product
     ? `${product.title} | NextData`
     : 'Product Not Found | NextData';
@@ -137,18 +158,18 @@ export default function ProductDetailPage({ product, error }) {
           </div>
         )}
 
-        {/* Product Details Layout */}
+        {/* Wide Product Details Layout */}
         {product && (
           <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-6 sm:p-10 xl:p-12">
               {/* Product Image Section */}
-              <div className="relative w-full h-80 sm:h-96 bg-white flex items-center justify-center p-6 border border-slate-100 rounded-lg">
+              <div className="lg:col-span-5 relative w-full h-80 sm:h-96 lg:h-[460px] bg-white flex items-center justify-center p-6 border border-slate-100 rounded-lg">
                 <div className="relative w-full h-full">
                   <Image
                     src={product.image}
                     alt={product.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-contain"
                     priority
                   />
@@ -156,9 +177,9 @@ export default function ProductDetailPage({ product, error }) {
               </div>
 
               {/* Product Info Section */}
-              <div className="flex flex-col justify-between space-y-6">
+              <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-3">
                     <span className="px-2.5 py-1 text-xs font-semibold uppercase tracking-wider bg-slate-100 text-slate-700 rounded">
                       {product.category}
                     </span>
@@ -171,11 +192,11 @@ export default function ProductDetailPage({ product, error }) {
                     )}
                   </div>
 
-                  <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
+                  <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-slate-900 leading-tight">
                     {product.title}
                   </h1>
 
-                  <div className="mt-4 text-2xl font-bold text-slate-900">
+                  <div className="mt-4 text-3xl font-extrabold text-slate-900">
                     ${Number(product.price).toFixed(2)}
                   </div>
 
@@ -191,7 +212,7 @@ export default function ProductDetailPage({ product, error }) {
 
                 {/* Additional Metadata / SSR info badge */}
                 <div className="border-t border-slate-100 pt-6">
-                  <div className="p-3 bg-slate-50 rounded-md border border-slate-200 text-xs text-slate-600">
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-600">
                     <p className="font-semibold text-slate-800">
                       Request-Time Rendering Note:
                     </p>

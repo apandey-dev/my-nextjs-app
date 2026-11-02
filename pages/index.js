@@ -63,18 +63,18 @@ export default function HomePage() {
       </Head>
 
       <div className="space-y-12">
-        {/* Hero Section */}
-        <section className="text-center max-w-3xl mx-auto pt-4 pb-2">
+        {/* Hero Section - Scaled for Wide Displays */}
+        <section className="text-center max-w-4xl mx-auto pt-6 pb-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 tracking-wide mb-6">
             <span className="w-2 h-2 rounded-full bg-blue-600" />
             Next.js Pages Router Architecture
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Data Fetching & API Routes in Next.js
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
             A comprehensive, production-grade implementation highlighting Static Site Generation
             (<span className="font-semibold text-slate-800">SSG</span>), Server-Side Rendering
             (<span className="font-semibold text-slate-800">SSR</span>), Client-Side Rendering with SWR
@@ -98,7 +98,7 @@ export default function HomePage() {
         </section>
 
         {/* Custom API Route Showcase (Task 4 & 5 Requirement) */}
-        <section className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <section className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 xl:p-10 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2">
             <div>
               <span className="text-xs uppercase tracking-widest font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">
@@ -158,7 +158,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1: SSG */}
-            <div className="bg-white rounded-lg border border-slate-200 p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
+            <div className="bg-white rounded-lg border border-slate-200 p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-colors">
               <div>
                 <span className="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase tracking-wider">
                   Static Site Gen (SSG)
@@ -182,7 +182,7 @@ export default function HomePage() {
             </div>
 
             {/* Card 2: SSR */}
-            <div className="bg-white rounded-lg border border-slate-200 p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
+            <div className="bg-white rounded-lg border border-slate-200 p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-colors">
               <div>
                 <span className="text-xs font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider">
                   Server-Side Render (SSR)
@@ -207,7 +207,7 @@ export default function HomePage() {
             </div>
 
             {/* Card 3: CSR */}
-            <div className="bg-white rounded-lg border border-slate-200 p-6 flex flex-col justify-between hover:border-slate-300 transition-colors">
+            <div className="bg-white rounded-lg border border-slate-200 p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-colors">
               <div>
                 <span className="text-xs font-semibold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200 uppercase tracking-wider">
                   Client-Side (CSR + SWR)
